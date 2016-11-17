@@ -1,0 +1,166 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+   "Description" : "AWS CloudFormation sample template to create EC2Instance on public vpc network : Region:US East (N. Virginia) AMI is CentOS Linux 7 x86_64 HVM EBS 1602-b7ee8a69-ee97-4a49-9e68-afaee216db2e-ami-d7e1d2bd.3 (ami-6d1c2007):Installs puppet node on this newly launched EC2 Instance, that talks to Puppet master to run the convergence. This template demonstrates using the AWS CloudFormation bootstrap scripts to install the packages and files necessary to deploy the CloudFormation Helper Scripts and puppet node at instance launch time.**WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
+"Parameters" : {
+   "KeyName": {
+     "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance,provide the key in the same region, where stack is to created",
+     "Type": "AWS::EC2::KeyPair::KeyName",
+     "ConstraintDescription" : "Can contain only ASCII characters."
+   },
+   "InstanceType" : {
+     "Description" : " EC2 instance type",
+     "Type" : "String",
+     "Default" : "t2.micro",
+     "AllowedValues" : [ "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge"],
+     "ConstraintDescription" : "Must be a valid EC2 instance type"
+   },
+   "PrivateIp" : {
+     "Description" : "EC2 instance private ip in selected subnet",
+     "Type" : "String",
+     "ConstraintDescription" : "Must be within the selected subnet range"
+   },
+   "VpcId" : {
+      "Type" : "AWS::EC2::VPC::Id",
+      "Description" : "VpcId of your existing Virtual Private Cloud (VPC)",
+      "Default" : "vpc-a97059ce"
+    },
+   "SubnetId" : {
+     "Description" : "EC2 instance subnet",
+     "Type" : "AWS::EC2::Subnet::Id",
+     "Default" : "subnet-99e11fb4",
+     "ConstraintDescription" : "Must be in the same subset as puppet master"
+   },
+   "ImageId" : {
+     "Description" : "EC2 instance ImageId",
+     "Type" : "AWS::EC2::Image::Id",
+     "Default" : "ami-6d1c2007",
+     "AllowedValues" : ["ami-6d1c2007","ami-a4827dc9", "ami-2051294a", "ami-b7b4fedd", "ami-fce3c696", "ami-e0e00f8d", "ami-3cc42b51", "ami-e17a958c", "ami-0714fb6a", "ami-eefe1183","ami-7f2e6015", "ami-b2e3c6d8", "ami-399e7154", "ami-5c9d7231", "ami-0188776c"],
+     "ConstraintDescription" : "Select the ImageId from the region where stack and EC2 Instance will be created"
+   }
+ },
+"Resources" : {
+ "myEc2Instance" : {
+      "Type" : "AWS::EC2::Instance",
+      "Metadata" : {
+        "AWS::CloudFormation::Init" : {
+          "configSets" : {
+            "ascending" : ["config1", "config2", "config3", "config4", "config5", "config6", "config7"]
+          },
+          "config3" : {
+            "commands" : {
+              "getrpm" : {
+                 "command" : "rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm",
+                  "cwd" : "/etc/yum.repos.d"
+              }
+            }
+          },
+          "config4" : {
+            "commands" : {
+              "InstallpuppetNode" : {
+                 "command" : "yum -y install puppet-agent"
+
+              }
+            }
+          },
+          "config5" : {
+            "commands" : {
+              "startpuppetNode" : {
+                 "command" : "/opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true"
+
+              }
+            }
+          },
+          "config1" : {
+            "files" : {
+                "/etc/hostname" : {
+                "content" : {"Fn::Join" : ["", [
+                "node2.training.com\n"
+                ]]}
+                }
+              }
+          },
+          "config7" : {
+            "commands" : {
+              "Applycatalouge" : {
+                 "command" : "puppet agent --onetime --no-daemonize --verbose"
+
+              }
+            }
+          },
+          "config2" : {
+            "files" : {
+              "/etc/hosts" : {
+                     "content" : {"Fn::Join" : ["", [
+                     "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4\n",
+                     "::1         localhost localhost.localdomain localhost6 localhost6.localdomain6\n",
+                     "192.168.1.18 puppet\n",
+                     "192.168.1.105 puppetnode2.training.com mysite.com www.mysite.com\n"
+
+                     ]]}
+                     }
+            }
+          },
+          "config6" : {
+            "commands" : {
+                "sourcepuppetagent" : {
+                  "command"   : "source /etc/profile.d/puppet-agent.sh",
+                  "cwd" : "/etc/profile.d/"
+                }
+              }
+          }
+        }
+      },
+      "Properties" : {
+	       "ImageId" : "ami-6d1c2007",
+	        "KeyName" : { "Ref" : "KeyName" },
+	         "InstanceType" : { "Ref" : "InstanceType" },
+	          "SecurityGroupIds" : ["sg-3bf5bf41"],
+            "Tags" : [
+              {
+               "Key" : "Name",
+                 "Value" : "puppetnode2"
+              }
+             ],
+               "PrivateIpAddress" : { "Ref" : "PrivateIp"},
+                "SubnetId" : { "Ref" : "SubnetId"},
+                "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+             "#!/bin/bash\n",
+             "#Need to install cloudformation tools first\n",
+          "rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\n",
+             "yum -y install wget\n",
+             "cd /opt/ && wget https://bootstrap.pypa.io/ez_setup.py\n",
+             "cd /opt/ && python ez_setup.py --insecure\n",
+             "cd /opt/ && curl -O https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz\n",
+             "cd /opt && tar -xvpf aws-cfn-bootstrap-latest.tar.gz\n",
+             "cd /opt/aws-cfn-bootstrap-1.4/ && python setup.py build\n",
+             "cd /opt/aws-cfn-bootstrap-1.4/ && python setup.py install\n",
+             "cd /opt/aws-cfn-bootstrap-1.4/ && ln -s /usr/init/redhat/cfn-hup /etc/init.d/cfn-hup\n",
+             "cd /opt/aws-cfn-bootstrap-1.4/ && chmod 775 /usr/init/redhat/cfn-hup\n",
+             "cd /opt/ && mkdir aws\n",
+             "cd /opt/aws/ && mkdir bin\n",
+             "cd /opt/aws/ && ln -s /usr/bin/cfn-hup /opt/aws/bin/cfn-hup\n",
+             "cd /opt/aws/ && ln -s /usr/bin/cfn-init /opt/aws/bin/cfn-init\n",
+             "cd /opt/aws/ && ln -s /usr/bin/cfn-signal /opt/aws/bin/cfn-signal\n",
+             "cd /opt/aws/ && ln -s /usr/bin/cfn-elect-cmd-leader /opt/aws/bin/cfn-elect-cmd-leader\n",
+             "cd /opt/aws/ && ln -s /usr/bin/cfn-get-metadata /opt/aws/bin/cfn-get-metadata\n",
+             "cd /opt/aws/ && ln -s /usr/bin/cfn-send-cmd-event /opt/aws/bin/cfn-send-cmd-event\n",
+             "cd /opt/aws/ && ln -s /usr/bin/cfn-send-cmd-result /opt/aws/bin/cfn-send-cmd-result\n",
+             "# Install the files and packages from the metadata\n",
+             "/usr/bin/cfn-init -v ",
+             "         --stack ", { "Ref" : "AWS::StackName" },
+             "         --resource myEc2Instance",
+             "         --configsets ascending ",
+             "         -v ",
+             "         --region ", { "Ref" : "AWS::Region" }, "\n"
+		]]}}
+
+  }
+},
+"MyEIP" : {
+  "Type" : "AWS::EC2::EIP",
+  "Properties" : {
+    "InstanceId" : { "Ref" : "myEc2Instance" }
+}
+}
+}
+}
