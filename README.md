@@ -1,6 +1,14 @@
 # DevOps_Proj
 DevOps project to automate the deployment process of  static web application in AWS with AWS Cloud Formation JSON template and Puppet
 
+DevOps Tools:
+
+Public Cloud : AWS
+Configuration / Provisioning Tool : Puppet Open Source
+IAAC : AWS CloudFormation
+SCM: GitHub
+
+
 ----------------------- DevOps Project Scenario-----------------------------------
 For this project, please think about how you would architect a scalable and
 
