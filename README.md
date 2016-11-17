@@ -51,4 +51,6 @@ Implementation:
 6. Upload the AWS JSON template to S3 bucket and create the stack, that automatically launches an EC2 Instance.
 7. EC2 Instance will be launced with puppet agent, that talks to Puppet Master to run the convergence, download the apache module.
 8. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
+
+~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~
 ---------------------------------------------------------------------------------------------------------------
