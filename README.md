@@ -45,12 +45,16 @@ server configuration.
 Implementation:
 1. Create an Instance on AWS (AMI-ami-6d1c2007).
 2. Install open source Puppet Master.
-3. Create a Apache module - Puppet_apache_module file contains the apache module script.
+3. Define a Apache module - Puppet_apache_module file contains the apache module script.
 4. Create Autosign file, that automatically signs the nodes.
-5. Create AWS Cloud Formation JSON template to launch an instance over AWS, bootstraped with CloudFormation helper scripts that needs to interprets the metadata - AWS_CF_JSON file contains the script.
-6. Upload the AWS JSON template to S3 bucket and create the stack, that automatically launches an EC2 Instance.
-7. EC2 Instance will be launced with puppet agent, that talks to Puppet Master to run the convergence, download the apache module.
-8. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
+5. Declare Apache module at /etc/puppetlabs/code/environments/production/manifests/site.pp
+node default {
+	include apache
+}
+6. Create AWS Cloud Formation JSON template to launch an instance over AWS, bootstraped with CloudFormation helper scripts that needs to interprets the metadata - AWS_CF_JSON file contains the script.
+7. Upload the AWS JSON template to S3 bucket and create the stack, that automatically launches an EC2 Instance.
+8. EC2 Instance will be launced with puppet agent, that talks to Puppet Master to run the convergence, download the apache module.
+9. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
 
 ~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~
 ---------------------------------------------------------------------------------------------------------------
