@@ -81,7 +81,7 @@ node default {
 
 
 #### Author
-[Munikumar](@Kumarenters) - [email](kumarenters@gmail.com)
+**Munikumar [Twitter](https://twitter.com/kumarenter) - [email](kumarenters@gmail.com)
 [GitHub](https://github.com/munikumare/)
 
 
