@@ -6,13 +6,13 @@
 
 *Approach 2 Tools : AWS Cloud; AWS Cloud Formation; Puppet Open Source*
 
-****************************************WARNING************************************************************************* 
+****************************************WARNING*****************************************************************
 
 Both approaches creates AWS resources like (EC2,ASG,ELB,S3 Bucket) in AWS. You will be billed for the AWS resources accordingly.
 
-************************************************************************************************************************
+****************************************************************************************************************
 
-**_DevOps Project Scenario_ _**
+**_DevOps Project Scenario_**
 
 For this project, please think about how you would architect a scalable and secure static web application in AWS or another IaaS provider.
 
@@ -81,7 +81,7 @@ node default {
 
 
 #### Author
-**Munikumar [Twitter](https://twitter.com/kumarenter) - [email](kumarenters@gmail.com)
+**Munikumar** [Twitter](https://twitter.com/kumarenter) - [email](kumarenters@gmail.com)
 [GitHub](https://github.com/munikumare/)
 
 
