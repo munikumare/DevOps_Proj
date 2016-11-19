@@ -2,18 +2,14 @@
 DevOps project to automate the deployment process of Scalable and secure web application into AWS.
 
 Approach 1 Tools: Using HashiCorp TERRAFORM; AWS Cloud
+
 Approach 2 Tools : AWS IAS; AWS Cloud Formation; Puppet Open Source
 
 ----------------------- DevOps Project Scenario-----------------------------------
-For this project, please think about how you would architect a scalable and
 
-secure static web application in AWS or another IaaS provider.
+For this project, please think about how you would architect a scalable and secure static web application in AWS or another IaaS provider.
 
-Create and deploy a running instance of a web server using a
-
-configuration management tool of your choice. The web server should
-
-serve one page with the following content.
+Create and deploy a running instance of a web server using a configuration management tool of your choice. The web server should serve one page with the following content.
 
 <html>
 
@@ -31,15 +27,7 @@ serve one page with the following content.
 
 </html>
 
-Secure this application and host such that only appropriate ports are
-
-publicly exposed and any http requests are redirected to https. This
-
-should be automated using a configuration management tool of your
-
-choice and you should feel free to use a self-signed certificate for the
-
-web server.
+Secure this application and host such that only appropriate ports are publicly exposed and any http requests are redirected to https. This should be automated using a configuration management tool of your choice and you should feel free to use a self-signed certificate for the web server.
 
 Develop and apply automated tests to validate the correctness of theserver configuration.
 
@@ -48,6 +36,7 @@ Develop and apply automated tests to validate the correctness of theserver confi
 Implementation:
 
 Solution 1 :
+
 1. Download the appropriate package for your OS and Arch.
 2. Unzip the Terraform Zip archive
 3. Add terraform installed directory to the PATH environment variable.
@@ -64,6 +53,7 @@ Userdatascript -> File holds the user data script, that's been referenced in the
 
 
 Solution 2:
+
 1. Create an Instance on AWS (AMI-ami-6d1c2007).
 2. Install open source Puppet Master.
 3. Define a Apache module - Puppet_apache_module file contains the apache module script.
