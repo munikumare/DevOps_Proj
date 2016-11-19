@@ -1,4 +1,4 @@
-# DevOps_Proj
+** DevOps_Proj **
 DevOps project to automate the deployment process of Scalable and Secure web application into AWS.
 
 Approach 1 Tools: HashiCorp TERRAFORM; AWS Cloud
@@ -46,7 +46,7 @@ Implementation:
 
 Solution 1 :
 
-1. Download the appropriate Terraform package for your OS and Arch.
+1. Download the appropriate [Terraform](https://www.terraform.io/downloads.html) package for your OS and Arch.
 2. Unzip the Terraform Zip archive
 3. Add terraform installed directory to the PATH environment variable.
 4. Run terraform --version to check the successfull installation of Terraform.
@@ -78,6 +78,9 @@ node default {
 7. Upload the AWS JSON template to S3 bucket and create the stack, that automatically launches an EC2 Instance.
 8. EC2 Instance will be launced with puppet agent, that talks to Puppet Master to run the convergence, download the apache module.
 9. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
+
+
+
 
 
 ~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~
