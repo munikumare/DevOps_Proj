@@ -51,9 +51,9 @@ Solution 1 :
 3. Add terraform installed directory to the PATH environment variable.
 4. Run terraform --version to check the successfull installation of Terraform.
 5. Add the AWS IAM AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to the environment variable.
-6. Download the GitHub Repository DevOps_proj/webclusterha to your server.
+6. Download the GitHub Repository [DevOps_proj/webclusterha](https://github.com/munikumare/DevOps_Proj) to your server.
 7. cd into the directory webclusterha and run the terraform plan and terraform apply command to launch the scalable and secure web cluster over AWS.
-8. Login into the AWS Console and the copy the AWS ELB endpoint (DNS Name) and run in the browser to test the website or test it with DNS Route53 Record set name.
+8. Login into the [AWS Console](https://aws.amazon.com/) and the copy the AWS ELB endpoint (DNS Name) and run in the browser to test the website or test it with DNS Route53 Record set name.
 
 Files
 
