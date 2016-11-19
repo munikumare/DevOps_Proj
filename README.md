@@ -1,9 +1,10 @@
-** DevOps_Proj **
-DevOps project to automate the deployment process of Scalable and Secure web application into AWS.
+### DevOps_Proj
 
-Approach 1 Tools: HashiCorp TERRAFORM; AWS Cloud
+**DevOps project to automate the deployment process of Scalable and Secure web application into AWS**
 
-Approach 2 Tools : AWS Cloud; AWS Cloud Formation; Puppet Open Source
+*Approach 1 Tools: HashiCorp TERRAFORM; AWS Cloud*
+
+*Approach 2 Tools : AWS Cloud; AWS Cloud Formation; Puppet Open Source*
 
 ****************************************WARNING************************************************************************* 
 
@@ -11,8 +12,7 @@ Both approaches creates AWS resources like (EC2,ASG,ELB,S3 Bucket) in AWS. You w
 
 ************************************************************************************************************************
 
-
------------------------ DevOps Project Scenario-----------------------------------
+**_DevOps Project Scenario_ _**
 
 For this project, please think about how you would architect a scalable and secure static web application in AWS or another IaaS provider.
 
@@ -42,9 +42,9 @@ Express everything in code and provide your code via a Git repository in GitHub.
 
 
 ---------------------------------------------------------------------------------------------------------------
-Implementation:
+#### Implementation
 
-Solution 1 :
+*Solution 1*
 
 1. Download the appropriate [Terraform](https://www.terraform.io/downloads.html) package for your OS and Arch.
 2. Unzip the [Terraform](https://www.terraform.io/intro/getting-started/install.html) Zip archive.
@@ -55,7 +55,7 @@ Solution 1 :
 7. cd into the directory webclusterha and run the terraform plan and terraform apply command to launch the scalable and secure web cluster over AWS.
 8. Login into the [AWS Console](https://aws.amazon.com/) and the copy the AWS ELB endpoint (DNS Name) and run in the browser to test the website or test it with DNS Route53 Record set name.
 
-Files
+_Files_
 
 Main.tf -> Actual code to launch the web cluster
 Variabes.tf -> File holds the variables to reference in the Main.tf
@@ -63,7 +63,7 @@ Userdatascript -> File holds the user data script, that's been referenced in the
 output.tf -> Prints the ELB DNS name and ELB Zone Id
 
 
-Solution 2:
+**Solution 2*
 
 1. Create an Instance on AWS (AMI-ami-6d1c2007).
 2. Install open source Puppet Master.
@@ -80,9 +80,8 @@ node default {
 9. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
 
 
+#### Author
+[Munikumar](@Kumarenters) - [email](munikumare@gmail.com / kumarenters@gmail.com)
+[GitHub](https://github.com/munikumare/)
 
-
-
-~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~
----------------------------------------------------------------------------------------------------------------
 
