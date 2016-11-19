@@ -3,7 +3,7 @@ DevOps project to automate the deployment process of Scalable and secure web app
 
 Approach 1 Tools: Using HashiCorp TERRAFORM; AWS Cloud
 
-Approach 2 Tools : AWS IAS; AWS Cloud Formation; Puppet Open Source
+Approach 2 Tools : AWS Cloud; AWS Cloud Formation; Puppet Open Source
 
 ----------------------- DevOps Project Scenario-----------------------------------
 
