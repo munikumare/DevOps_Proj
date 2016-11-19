@@ -31,6 +31,8 @@ Secure this application and host such that only appropriate ports are publicly e
 
 Develop and apply automated tests to validate the correctness of theserver configuration.
 
+Express everything in code and provide your code via a Git repository in GitHub.
+
 
 ---------------------------------------------------------------------------------------------------------------
 Implementation:
@@ -47,6 +49,7 @@ Solution 1 :
 8. Login into the AWS Console and the copy the AWS ELB endpoint and run in the browser to test the website.
 
 Files
+
 Main.tf -> Actual code to launch the web cluster
 Variabes.tf -> File holds the variables to reference in the Main.tf
 Userdatascript -> File holds the user data script, that's been referenced in the Main.tf
