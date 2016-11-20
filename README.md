@@ -116,7 +116,7 @@ node default {
 #### Author
 **Munikumar** 
 - [Twitter](https://twitter.com/kumarenters)
-- Please share your suggestions and feedback @ *kumarenters@gmail.com*
+- Please share your suggestions and feedback @ *munikumare@gmail.com*
 - [GitHub URL](https://github.com/munikumare/)
 
 
