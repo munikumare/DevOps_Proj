@@ -77,9 +77,11 @@ output.tf -> Prints the ELB DNS name and ELB Zone Id
 3. Define a Apache module - [DevOps_Proj/apache] (https://github.com/munikumare/DevOps_Proj/tree/master/apache) folder contains the apache module scripts.
 4. Create Autosign file with the node name of the instance, which automatically signs the nodes.
 5. Declare Apache module at /etc/puppetlabs/code/environments/production/manifests/site.pp
-- node default {
--	include apache
-- }
+```
+node default {
+  include apache
+}
+```
 6. Create AWS Cloud Formation JSON template to launch an instance over AWS, bootstraped with CloudFormation helper scripts that needs to interprets the metadata - [DevOps_Proj/SSLFNL.json](https://github.com/munikumare/DevOps_Proj/blob/master/SSLFNL.json) file contains the script.
 7. Modify the private ip of the instance accordingly at the config2 section of Metadata.
 7. Upload the AWS JSON template to S3 bucket and create the stack, that automatically launches an EC2 Instance.
