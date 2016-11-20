@@ -2,9 +2,16 @@
 
 **DevOps project to automate the deployment process of Scalable and Secure web application into AWS**
 
-*Approach 1 Tools: HashiCorp TERRAFORM; AWS Cloud*
+*Approach 1 Tools
 
-*Approach 2 Tools : AWS Cloud; AWS Cloud Formation; Puppet Open Source*
+- HashiCorp TERRAFORM
+- AWS Cloud*
+
+*Approach 2 Tools
+
+- AWS Cloud
+- AWS Cloud Formation
+- Puppet Open Source*
 
 ****************************************WARNING*****************************************************************
 
@@ -81,7 +88,8 @@ node default {
 
 
 #### Author
-**Munikumar** [Twitter](https://twitter.com/kumarenters) - [Email](kumarenters@gmail.com)
+**Munikumar** [Twitter](https://twitter.com/kumarenters)
+- Please share your suggestions and feedback @ *kumarenters@gmail.com*
 [GitHub](https://github.com/munikumare/)
 
 
