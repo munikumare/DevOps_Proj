@@ -5,13 +5,13 @@
 *Approach 1 Tools
 
 - HashiCorp TERRAFORM
-- AWS Cloud*
+- AWS Cloud
 
 *Approach 2 Tools
 
 - AWS Cloud
 - AWS Cloud Formation
-- Puppet Open Source*
+- Puppet Open Source
 
 ****************************************WARNING*****************************************************************
 
