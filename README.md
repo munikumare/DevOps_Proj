@@ -1,4 +1,4 @@
-### DevOps_Proj
+## DevOps_Proj
 
 **DevOps project to automate the deployment process of Scalable and Secure web application into AWS**
 
@@ -49,7 +49,7 @@ Express everything in code and provide your code via a Git repository in GitHub.
 
 
 ---------------------------------------------------------------------------------------------------------------
-#### Implementation
+### Implementation
 
 *Solution 1*
 
@@ -113,7 +113,7 @@ node default {
 10. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
 
 
-#### Author
+### Author
 **Munikumar** 
 - [Twitter](https://twitter.com/kumarenters)
 - Please share your suggestions and feedback @ *munikumare@gmail.com*
