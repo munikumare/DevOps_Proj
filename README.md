@@ -83,10 +83,25 @@ node default {
 }
 ```
 6. Create AWS Cloud Formation JSON template to launch an instance over AWS, bootstraped with CloudFormation helper scripts that needs to interprets the metadata - [DevOps_Proj/SSLFNL.json](https://github.com/munikumare/DevOps_Proj/blob/master/SSLFNL.json) file contains the script.
-7. Modify the private ip of the instance accordingly at the config2 section of Metadata.
-7. Upload the AWS JSON template to S3 bucket and create the stack, that automatically launches an EC2 Instance.
-8. EC2 Instance will be launced with puppet agent, that talks to Puppet Master to run the convergence, download the apache module.
-9. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
+7. Modify the Puppet Node IP of the instance and Puppet Master Server IP accordingly at the config2 section of Metadata.
+```
+ "config2" : {
+            "files" : {
+              "/etc/hosts" : {
+                     "content" : {"Fn::Join" : ["", [
+                     "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4\n",
+                     "::1         localhost localhost.localdomain localhost6 localhost6.localdomain6\n",
+                     "192.168.1.18 puppet\n",
+                     "192.168.1.105 puppetnode2.training.com mysite.com www.mysite.com\n"
+
+                     ]]}
+                     }
+            }
+          },
+```
+8. Upload the AWS JSON template to S3 bucket and create the stack, that automatically launches an EC2 Instance.
+9. EC2 Instance will be launced with puppet agent, that talks to Puppet Master to run the convergence, download the apache module.
+10. Add mysite.com to your local dns, i.e. /etc/hosts file and test the site http://mysite.com
 
 
 #### Author
