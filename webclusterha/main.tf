@@ -45,7 +45,7 @@ resource "aws_launch_configuration" "lcterraform" {
         instance_type = "t2.micro"
         security_groups = ["${aws_security_group.sgterraform.id}"]
         key_name = "admin1"
-        user_data = "${file("smallscript")}"
+        user_data = "${file("userdatascript")}"
    	root_block_device {
        # device_name = "/dev/sda1"
         volume_size = 8
