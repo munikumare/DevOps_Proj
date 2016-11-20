@@ -90,6 +90,6 @@ node default {
 #### Author
 **Munikumar** [Twitter](https://twitter.com/kumarenters)
 - Please share your suggestions and feedback @ *kumarenters@gmail.com*
-[GitHub](https://github.com/munikumare/)
+- [GitHub](https://github.com/munikumare/)
 
 
