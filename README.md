@@ -59,15 +59,24 @@ Express everything in code and provide your code via a Git repository in GitHub.
 4. Run `terraform --version` to check the successfull installation of Terraform.
 5. Add the AWS IAM AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to the environment variable.
 6. Download the GitHub Repository [DevOps_proj/webclusterha](https://github.com/munikumare/DevOps_Proj) to your server.
-7. cd into the directory webclusterha and run the terraform plan and terraform apply command to launch the scalable and secure web cluster over AWS.
+7. cd into the directory webclusterha and run the `terraform plan` and `terraform apply` command to launch the scalable and secure web cluster over AWS.
 8. Login into the [AWS Console](https://aws.amazon.com/) and the copy the AWS ELB endpoint (DNS Name) and run in the browser to test the website or test it with DNS Route53 Record set name.
+9. Clean up all the AWS resources once done with the lab by running the command `terraform destroy` and type `yes` at the prompt.
+```
+terraform destroy
+Do you really want to destroy?
+  Terraform will delete all your managed infrastructure.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+```
 
 _Files_
 
-Main.tf -> Actual code to launch the web cluster
-Variabes.tf -> File holds the variables to reference in the Main.tf
-Userdatascript -> File holds the user data script, that's been referenced in the Main.tf
-output.tf -> Prints the ELB DNS name and ELB Zone Id
+- Main.tf -> Actual code to launch the web cluster
+- Variabes.tf -> File holds the variables to reference in the Main.tf
+- Userdatascript -> File holds the user data script, that's been referenced in the Main.tf
+- output.tf -> Prints the ELB DNS name and ELB Zone Id
 
 
 **Solution 2*
